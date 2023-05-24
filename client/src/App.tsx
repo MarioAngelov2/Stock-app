@@ -1,10 +1,12 @@
 import "./App.css";
-import { Home } from "./components/home";
+import { Home } from "./components/Home";
+import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
     <div>
-      <Home price={30} />
+      <Navbar />
+      <Home price={20} />
     </div>
   );
 }

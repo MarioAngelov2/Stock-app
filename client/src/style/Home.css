@@ -1,0 +1,115 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  min-height: 60vh;
+  margin: auto;
+}
+/* first row */
+
+.home-container .firstRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* left side */
+.home-container .firstRow .leftSide-info {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.home-container .firstRow .leftSide-info h3 {
+  font-size: 2rem;
+}
+
+.home-container .firstRow .leftSide-info p {
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* button */
+.home-container .firstRow .leftSide-info .button {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.home-container .firstRow .leftSide-info .button button {
+  height: 2.4rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: rgb(230, 149, 63);
+  color: white;
+  transition: ease-in-out 0.2s;
+}
+
+.home-container .firstRow .leftSide-info .button button:hover {
+  transform: scale(1.05);
+  transition: ease-in-out 0.2s;
+}
+
+/* right side */
+.home-container .firstRow .rightSide-info {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+}
+
+.home-container .firstRow .rightSide-info .hero-img {
+  max-width: 640px;
+}
+
+.home-container .firstRow .rightSide-info .hero-img img {
+  width: 100%;
+}
+
+/* secondRow */
+.home-container .secondRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+
+/* left side */
+.home-container .secondRow .leftSide-info {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.home-container .secondRow .leftSide-info .row {
+  display: flex;
+  align-items: center;
+}
+
+.home-container .secondRow .leftSide-info .row .stock-image {
+  width: 50%;
+}
+
+.home-container .secondRow .leftSide-info .row .stock-image img {
+  width: 70%;
+}
+
+/* right side */
+.home-container .secondRow .rightSide-info {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.home-container .secondRow .rightSide-info .bullet-info h3 {
+  font-size: 2rem;
+}
+
+.home-container .secondRow .rightSide-info .bullet-info p {
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
