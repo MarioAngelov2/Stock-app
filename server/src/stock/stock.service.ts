@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class StockService {
-  getDataByTimeSlice(start: string, end: string): any {
+  getDataByTimeSlice(start: string, end: string): any[] {
     const mockData = [
       {
         id: 1,
