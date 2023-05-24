@@ -6,6 +6,15 @@ import coffee from "../assets/coffee.png";
 import phone from "../assets/mobile.png";
 import laptop from "../assets/laptop.png";
 
+import logo1 from "../assets/hdfc.png";
+import logo2 from "../assets/infosys.png";
+import logo3 from "../assets/kotak.png";
+import logo4 from "../assets/maruti.png";
+import logo5 from "../assets/reliance.png";
+import logo6 from "../assets/tcs.png";
+import logo7 from "../assets/whirpool.png";
+import logo8 from "../assets/wipro.png";
+
 interface Props {
   price: number;
 }
@@ -75,6 +84,35 @@ export function Home({ price }: Props) {
               a non-finance background
             </p>
             <p>Add stocks you like to your personal plan (saved locally)</p>
+          </div>
+        </div>
+      </div>
+      <div className="thirdRow">
+        <h4>Analyze the top companies of the stock market</h4>
+        <div className="companies-logos">
+          <div className="logo-container">
+            <img src={logo1} />
+          </div>
+          <div className="logo-container">
+            <img src={logo2} />
+          </div>
+          <div className="logo-container">
+            <img src={logo3} />
+          </div>
+          <div className="logo-container">
+            <img src={logo4} />
+          </div>
+          <div className="logo-container">
+            <img src={logo5} />
+          </div>
+          <div className="logo-container">
+            <img src={logo6} />
+          </div>
+          <div className="logo-container">
+            <img src={logo7} />
+          </div>
+          <div className="logo-container">
+            <img src={logo8} />
           </div>
         </div>
       </div>
