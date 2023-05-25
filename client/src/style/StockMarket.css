@@ -1,0 +1,84 @@
+.stockMarket-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.stockMarket-container .market-container {
+  margin-top: 7rem;
+}
+
+.stockMarket-container .market-container h2 {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.stockMarket-container .dateTime-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+
+.stockMarket-container .dateTime-container .startingDate-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 5rem;
+}
+
+.stockMarket-container .dateTime-container .startingDate-container label {
+  font-size: 1.05rem;
+}
+
+.stockMarket-container .dateTime-container .startingDate-container input {
+  margin-top: 1rem;
+  width: 200px;
+  height: 40px;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.stockMarket-container .dateTime-container .endingDate-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 5rem;
+}
+
+.stockMarket-container .dateTime-container .endingDate-container label {
+  font-size: 1.05rem;
+}
+
+.stockMarket-container .dateTime-container .endingDate-container input {
+  margin-top: 1rem;
+  width: 200px;
+  height: 40px;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.stockMarket-container .market-container .button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.stockMarket-container .market-container .button .search-btn {
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(230, 149, 63);
+}
