@@ -19,7 +19,7 @@ interface Props {
   price: number;
 }
 
-export function Home({ price }: Props) {
+export function Home() {
   return (
     <div className="home-container">
       <div className="firstRow">
