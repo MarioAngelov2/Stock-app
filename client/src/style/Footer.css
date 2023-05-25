@@ -1,0 +1,17 @@
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  height: 10vh;
+  margin: auto;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid black;
+}
+
+
+.footer-container .footer-info p {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
