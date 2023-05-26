@@ -15,6 +15,13 @@ import logo6 from "../assets/tcs.png";
 import logo7 from "../assets/whirpool.png";
 import logo8 from "../assets/wipro.png";
 
+import apple from '../assets/apple.png'
+import microsoft from '../assets/microsoft.png'
+import spotify from '../assets/spotify.png'
+import netflix from '../assets/netflix.png'
+import tesla from '../assets/tesla.png'
+import nike from '../assets/nike.jpeg'
+
 interface Props {
   price: number;
 }
@@ -45,26 +52,26 @@ export function Home() {
         <div className="leftSide-info">
           <div className="row">
             <div className="stock-image">
-              <img src={coffee} />
+              <img src={nike} />
             </div>
             <div className="stock-info">
-              <p>Coffee $200</p>
+              <p>Nike</p>
             </div>
           </div>
           <div className="row">
             <div className="stock-image">
-              <img src={phone} />
+              <img src={netflix} />
             </div>
             <div className="stock-info">
-              <p>iPhone $699</p>
+              <p>Netflix</p>
             </div>
           </div>
           <div className="row">
             <div className="stock-image">
-              <img src={laptop} />
+              <img src={spotify} />
             </div>
             <div className="stock-info">
-              <p>Laptop $999</p>
+              <p>Tesla</p>
             </div>
           </div>
         </div>
@@ -91,28 +98,28 @@ export function Home() {
         <h4>Analyze the top companies of the stock market</h4>
         <div className="companies-logos">
           <div className="logo-container">
-            <img src={logo1} />
+            <img src={nike} />
           </div>
           <div className="logo-container">
-            <img src={logo2} />
+            <img src={spotify} />
           </div>
           <div className="logo-container">
-            <img src={logo3} />
+            <img src={netflix} />
           </div>
           <div className="logo-container">
             <img src={logo4} />
           </div>
           <div className="logo-container">
-            <img src={logo5} />
+            <img src={apple} />
           </div>
           <div className="logo-container">
-            <img src={logo6} />
+            <img src={tesla} />
           </div>
           <div className="logo-container">
             <img src={logo7} />
           </div>
           <div className="logo-container">
-            <img src={logo8} />
+            <img src={microsoft} />
           </div>
         </div>
       </div>
