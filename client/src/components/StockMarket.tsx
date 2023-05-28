@@ -27,9 +27,19 @@ export function StockMarket() {
         <h2>Select a time slice to see all the stock prices!</h2>
         <StockMarketData onQuery={handleDataQuery} />
        {
-        data.map((item: StockItem) => (
-          <h1 key={item.id}>{item.timestamp}</h1>
-        ))
+        data.length > 0 
+        ? (
+          <div>
+            <h3>Stock Prices</h3>
+            <ul>
+              {data.map((stock: StockItem) => (
+                <li key={stock.id}>{stock.name}: ${stock.price}</li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <h3>No stock data available.</h3>
+        )
        }
       </div>
     </div>
