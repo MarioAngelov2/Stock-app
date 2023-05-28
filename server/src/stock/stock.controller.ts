@@ -12,6 +12,9 @@ export class StockController {
       throw new BadRequestException('Missing start or end parameter');
     }
 
-    return this.stockService.getDataByTimeSlice(start, end);
+    const URL = this.stockService.getFormattedURL(start, end);
+
+    return URL;
+    // return this.stockService.getDataByTimeSlice(starting, ending);
   }
 }
