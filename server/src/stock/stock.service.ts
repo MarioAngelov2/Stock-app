@@ -3,20 +3,6 @@ import { formatISO, parseISO } from 'date-fns';
 
 @Injectable()
 export class StockService {
-  
-
-  // getDataByTimeSlice(start: string, end: string): any[] {
-
-  //   const startTime = new Date(start).getTime();
-  //   const endTime = new Date(end).getTime();
-
-  //   const filtetedData = this.mockData.filter((item) => {
-  //     const itemTime = new Date(item.timestamp).getTime();
-  //     return itemTime >= startTime && itemTime <= endTime;
-  //   });
-
-  //   return filtetedData;
-  // }
 
   getFormattedURL(start: string, end: string): any {
     const mockData = [
@@ -68,15 +54,4 @@ export class StockService {
     return filteredData;
   }
 
-//   getDataFromUrl(start: string, end: string) {
-//     const parsedStart = parseISO(start);
-//     const parseEnd = parseISO(end);
-
-//     const filteredData = this.mockData.filter((item) => {
-//       const itemTime = parseISO(item.timestamp);
-//       return itemTime >= parsedStart && itemTime <= parseEnd;
-//     })
-
-//     return filteredData
-//   }
 }
