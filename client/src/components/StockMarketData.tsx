@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from "react";
-import { addDays, format } from "date-fns";
+import { addDays, format, subDays } from "date-fns";
 import { getStocks } from "../services/requester";
 
 import "../style/StockMarket.css";
@@ -35,18 +35,18 @@ export function StockMarketData({ onQuery }: DateQueryProps) {
     onQuery(params);
   };
 
-  const minDate = new Date();
-  const maxDate = addDays(minDate, 3);
+  const currentDate = new Date();
+  const substractedDate = subDays(currentDate, 3);
 
   return (
     <>
       <div className="dateTime-container">
-        <div className="startingDate-container">  
+        <div className="startingDate-container">
           <label>Select a starting date</label>
           <input
             type="datetime-local"
-            min={format(minDate, "yyyy-MM-dd'T'HH:mm")}
-            max={format(maxDate, "yyyy-MM-dd'T'HH:mm")}
+            min={format(substractedDate, "yyyy-MM-dd'T'HH:mm")}
+            max={format(currentDate, "yyyy-MM-dd'T'HH:mm")}
             onChange={handleChangeStart}
           />
         </div>
@@ -54,8 +54,8 @@ export function StockMarketData({ onQuery }: DateQueryProps) {
           <label>Selected an ending date</label>
           <input
             type="datetime-local"
-            min={format(minDate, "yyyy-MM-dd'T'HH:mm")}
-            max={format(maxDate, "yyyy-MM-dd'T'HH:mm")}
+            min={format(substractedDate, "yyyy-MM-dd'T'HH:mm")}
+            max={format(currentDate, "yyyy-MM-dd'T'HH:mm")}
             onChange={handleChangeEnd}
           />
         </div>
