@@ -29,7 +29,7 @@ export function StockMarket() {
        {
         data.length > 0 
         ? (
-          <div>
+          <div className="stockData-container">
             <h3>Stock Prices</h3>
             <ul>
               {data.map((stock: StockItem) => (
