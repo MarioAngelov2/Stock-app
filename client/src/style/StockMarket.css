@@ -83,6 +83,7 @@
   background-color: rgb(230, 149, 63);
 }
 
+/* displayed stock data */
 .stockMarket-container .market-container .stockData-container {
   display: flex;
   flex-direction: column;
@@ -96,11 +97,13 @@
   .market-container
   .stockData-container
   .stockList-container {
-  display: flex;
+  display: grid;
+  
   width: 100%;
   justify-content: center;
 }
 
+/* pagination buttons */
 .stockMarket-container .paginationButtons {
   width: 80%;
   display: flex;
