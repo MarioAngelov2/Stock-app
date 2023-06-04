@@ -2,7 +2,8 @@ import { useState } from "react";
 import "../style/StockMarket.css";
 import { getStocks } from "../services/requester";
 import { StockMarketData } from "./StockMarketData";
-import { subDays } from "date-fns";
+import ReactPaginate from "react-paginate";
+import { ReactPaginateProps } from "react-paginate";
 
 export interface IAppProps {}
 
@@ -15,11 +16,10 @@ interface StockItem {
 
 export function StockMarket() {
   const [data, setData] = useState<any>([]);
+  const [pageNumber, setPageNumber] = useState<any>(0);
 
-  const endDate = new Date();
-  const startDate = subDays(endDate, 1);
-
-  let currentTimeStamp = startDate.getTime();
+  const stocksPerPage = 20;
+  const pagesVisited = pageNumber * stocksPerPage;
 
   const handleDataQuery = (params: { start: string; end: string }) => {
     getStocks(params).then((result) => {
@@ -32,16 +32,24 @@ export function StockMarket() {
       <div className="stockData-container">
         <h3>Stock Prices</h3>
         <ul>
-          {data.flatMap(([_, stock]: any) => (
-            <li key={stock.timestamp}>
-              {stock.name}: {stock.price} - {stock.timestamp}
-            </li>
-          ))}
+          {data
+            .slice(pagesVisited, pagesVisited + stocksPerPage)
+            .flatMap(([_, stock]: any) => (
+              <li key={stock.timestamp}>
+                {stock.name}: {stock.price} - {new Date(stock.timestamp).toLocaleString()}
+              </li>
+            ))}
         </ul>
       </div>
     ) : (
       <h3>No stock data available.</h3>
     );
+
+  const pageCount = Math.ceil(data.length / stocksPerPage);
+
+  const pageChange = ({ selected }: any) => {
+    setPageNumber(selected);
+  };
 
   return (
     <div className="stockMarket-container">
@@ -49,6 +57,17 @@ export function StockMarket() {
         <h2>Select a time slice to see all the stock prices!</h2>
         <StockMarketData onQuery={handleDataQuery} />
         {renderStocks}
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={pageChange}
+          containerClassName={"paginationButtons"}
+          previousLinkClassName={"prevButton"}
+          nextLinkClassName={"nextButton"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
+        />
       </div>
     </div>
   );
