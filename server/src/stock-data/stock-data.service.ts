@@ -17,12 +17,12 @@ export class StockDataService {
     while (currentTimeStamp <= endingDate.getTime()) {
       let currentDate = new Date(currentTimeStamp);
 
-      // let timeStamp = currentDate.toISOString();
+      let randomPrice = (Math.random() * 100 / 2).toFixed(2);
 
       newData.push({
         id: '1',
         name: 'Tesla',
-        price: '1',
+        price: randomPrice,
         timestamp: currentDate.toISOString(),
       });
 
