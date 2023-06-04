@@ -31,15 +31,18 @@ export function StockMarket() {
     data.length > 0 ? (
       <div className="stockData-container">
         <h3>Stock Prices</h3>
-        <ul>
-          {data
-            .slice(pagesVisited, pagesVisited + stocksPerPage)
-            .flatMap(([_, stock]: any) => (
-              <li key={stock.timestamp}>
-                {stock.name}: {stock.price} - {new Date(stock.timestamp).toLocaleString()}
-              </li>
-            ))}
-        </ul>
+        <div className="stockList-container">
+          <ul>
+            {data
+              .slice(pagesVisited, pagesVisited + stocksPerPage)
+              .flatMap(([_, stock]: any) => (
+                <li key={stock.timestamp}>
+                  {stock.name}: ${stock.price} -{" "}
+                  {new Date(stock.timestamp).toLocaleString()}
+                </li>
+              ))}
+          </ul>
+        </div>
       </div>
     ) : (
       <h3>No stock data available.</h3>
