@@ -17,6 +17,8 @@ export class StockDataService {
     while (currentTimeStamp <= endingDate.getTime()) {
       let currentDate = new Date(currentTimeStamp);
 
+      // let timeStamp = currentDate.toISOString();
+
       newData.push({
         id: '1',
         name: 'Tesla',
