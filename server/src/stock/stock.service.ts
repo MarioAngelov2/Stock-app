@@ -12,39 +12,6 @@ export class StockService {
       this.stockDataService.generateAndStoreData()
     }
 
-    const mockData = [
-      {
-        id: 1,
-        name: 'Tesla',
-        price: '$299',
-        timestamp: '2023-06-02T10:00:00',
-      },
-      {
-        id: 2,
-        name: 'Tesla',
-        price: '$280',
-        timestamp: '2023-06-02T10:00:10',
-      },
-      {
-        id: 3,
-        name: 'Tesla',
-        price: '$250',
-        timestamp: '2023-06-02T10:00:20',
-      },
-      {
-        id: 4,
-        name: 'Tesla',
-        price: '$320',
-        timestamp: '2023-06-02T10:00:30',
-      },
-      {
-        id: 5,
-        name: 'Tesla',
-        price: '$320',
-        timestamp: '2023-06-02T10:00:40',
-      },
-    ];
-
     const startingDate = parseISO(start);
     const endingDate = parseISO(end);
 
