@@ -2,7 +2,6 @@ import { useState } from "react";
 import "../style/StockMarket.css";
 import { getStocks } from "../services/requester";
 import { StockMarketData } from "./StockMarketData";
-import ReactPaginate from "react-paginate";
 import {
   XAxis,
   YAxis,
@@ -23,44 +22,11 @@ interface StockItem {
 
 export function StockMarket() {
   const [data, setData] = useState<any>([]);
-  const [pageNumber, setPageNumber] = useState<any>(0);
-
-  const stocksPerPage = 20;
-  const pagesVisited = pageNumber * stocksPerPage;
 
   const handleDataQuery = (params: { start: string; end: string }) => {
     getStocks(params).then((result) => {
-      setData(result.URL);
+      setData(result.stockData);
     });
-  };
-
-  console.log(data)
-
-  const renderStocks =
-    data.length > 0 ? (
-      <div className="stockData-container">
-        <h3>STOCK PRICES</h3>
-        <div className="stockList-container">
-          <ul>
-            {data
-              .slice(pagesVisited, pagesVisited + stocksPerPage)
-              .map((stock: any) => (
-                <li key={stock.timestamp}>
-                  {stock.name}: ${stock.price} -
-                  {new Date(stock.timestamp).toLocaleString()}
-                </li>
-              ))}
-          </ul>
-        </div>
-      </div>
-    ) : (
-      <h3>No stock data available.</h3>
-    );
-
-  const pageCount = Math.ceil(data.length / stocksPerPage);
-
-  const pageChange = ({ selected }: any) => {
-    setPageNumber(selected);
   };
 
   const chartData = data.map((stock: any) => ({
@@ -107,19 +73,14 @@ export function StockMarket() {
       <div className="market-container">
         <h2>Select a time slice to see all the stock prices!</h2>
         <StockMarketData onQuery={handleDataQuery} />
-        {renderChart}
-        {renderStocks}
-        <ReactPaginate
-          previousLabel={"Previous"}
-          nextLabel={"Next"}
-          pageCount={pageCount}
-          onPageChange={pageChange}
-          containerClassName={"paginationButtons"}
-          previousLinkClassName={"prevButton"}
-          nextLinkClassName={"nextButton"}
-          disabledClassName={"paginationDisabled"}
-          activeClassName={"paginationActive"}
-        />
+        {data.length > 0 ? (
+          <div className="stockData-container">
+            <h3>STOCK PRICES</h3>
+            <div className="stockList-container">{renderChart}</div>
+          </div>
+        ) : (
+          <h3>No stock data available.</h3>
+        )}
       </div>
     </div>
   );
