@@ -3,7 +3,14 @@ import "../style/StockMarket.css";
 import { getStocks } from "../services/requester";
 import { StockMarketData } from "./StockMarketData";
 import ReactPaginate from "react-paginate";
-import { ReactPaginateProps } from "react-paginate";
+import {
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  AreaChart,
+  Area,
+} from "recharts";
 
 export interface IAppProps {}
 
@@ -23,21 +30,23 @@ export function StockMarket() {
 
   const handleDataQuery = (params: { start: string; end: string }) => {
     getStocks(params).then((result) => {
-      setData(result);
+      setData(result.URL);
     });
   };
+
+  console.log(data)
 
   const renderStocks =
     data.length > 0 ? (
       <div className="stockData-container">
-        <h3>Stock Prices</h3>
+        <h3>STOCK PRICES</h3>
         <div className="stockList-container">
           <ul>
             {data
               .slice(pagesVisited, pagesVisited + stocksPerPage)
-              .flatMap(([_, stock]: any) => (
+              .map((stock: any) => (
                 <li key={stock.timestamp}>
-                  {stock.name}: ${stock.price} -{" "}
+                  {stock.name}: ${stock.price} -
                   {new Date(stock.timestamp).toLocaleString()}
                 </li>
               ))}
@@ -54,11 +63,51 @@ export function StockMarket() {
     setPageNumber(selected);
   };
 
+  const chartData = data.map((stock: any) => ({
+    x: new Date(stock.timestamp).toLocaleString(),
+    price: stock.price,
+    name: stock.name,
+  }));
+
+  const renderChart = (
+    <div className="chart-container">
+      <div className="chart-wrapper">
+        <AreaChart width={1100} height={600} data={chartData}>
+          <CartesianGrid stroke="#ccc" opacity="0.5" vertical={false} />
+          <YAxis
+            dataKey="price"
+            axisLine={false}
+            domain={["dataMin, 'dataMax"]}
+            tickCount={10}
+            tickLine={false}
+            tickFormatter={(number) => `$${number.toFixed(2)}`}
+          />
+          <XAxis
+            dataKey="x"
+            tickLine={false}
+            axisLine={false}
+            tickFormatter={(str): any => {
+              return new Date(str).toLocaleTimeString();
+            }}
+          />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="price"
+            stroke="#1398C0"
+            fill="#1398C0"
+          />
+        </AreaChart>
+      </div>
+    </div>
+  );
+
   return (
     <div className="stockMarket-container">
       <div className="market-container">
         <h2>Select a time slice to see all the stock prices!</h2>
         <StockMarketData onQuery={handleDataQuery} />
+        {renderChart}
         {renderStocks}
         <ReactPaginate
           previousLabel={"Previous"}
