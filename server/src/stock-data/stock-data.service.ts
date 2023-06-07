@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { subDays } from 'date-fns';
+import { parseISO, subDays } from 'date-fns';
 
 @Injectable()
 export class StockDataService {
-  dataStore: any[] = [];
+  dataStore: any = [];
+  prices: any = [];
   isGeneratedData: boolean = false;
 
   generateAndStoreData(): void {
-    const newData = [];
+    const newData = {};
 
     const endingDate = new Date();
     const startingDate = subDays(endingDate, 1);
@@ -17,15 +18,16 @@ export class StockDataService {
     while (currentTimeStamp <= endingDate.getTime()) {
       let currentDate = new Date(currentTimeStamp);
 
-      let randomPrice = (Math.random() * 100 / 2).toFixed(2);
+      let randomPrice = (1 + Math.random()).toFixed(2);
 
-      newData.push({
-        id: '1',
+      const newDataEntry = {
+        id: currentDate.toISOString(),
         name: 'Tesla',
         price: randomPrice,
         timestamp: currentDate.toISOString(),
-      });
+      };
 
+      newData[currentDate.toISOString()] = newDataEntry;
       currentTimeStamp += 1000;
     }
 
