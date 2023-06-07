@@ -13,8 +13,13 @@ export class StockController {
     }
 
     const URL = this.stockService.getFormattedURL(start, end);
+    const PRICES = this.stockService.getPrices(start, end)
 
-    return URL;
-    // return this.stockService.getDataByTimeSlice(starting, ending);
+    const response = {
+      stockData: URL,
+      stockPrice: PRICES,
+    }
+
+    return response;
   }
 }
