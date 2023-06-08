@@ -37,6 +37,8 @@ export class StockService {
     const startingDate = parseISO(start);
     const endingDate = parseISO(end);
 
+    let data = {};
+
     if (start && end) {
       const filteredData = Object.entries(
         this.stockDataService.dataStore,
@@ -48,18 +50,35 @@ export class StockService {
       let maxPrice = Number.MIN_VALUE;
       let minPrice = Number.MAX_VALUE;
 
+      let buyTime = '';
+      let sellTime = '';
+
       filteredData.forEach(([_, stock]) => {
         const price = (stock as StockData).price;
+        const name = (stock as StockData).name;
+        const timestamp = (stock as StockData).timestamp;
 
         if (price > maxPrice) {
           maxPrice = price;
+          sellTime = timestamp;
         }
         if (price < minPrice) {
           minPrice = price;
+          buyTime = timestamp;
+        }
+
+        if (new Date(buyTime) < new Date(sellTime)) {
+          data = {
+            name: name,
+            buyPrice: minPrice,
+            sellPrice: maxPrice,
+            buyTime,
+            sellTime,
+          };
         }
       });
 
-      return { maxPrice, minPrice };
+      return data;
     }
   }
 }
