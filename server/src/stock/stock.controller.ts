@@ -17,7 +17,7 @@ export class StockController {
 
     const response = {
       stockData: URL,
-      stockPrice: PRICES,
+      bestPrices: PRICES,
     }
 
     return response;
