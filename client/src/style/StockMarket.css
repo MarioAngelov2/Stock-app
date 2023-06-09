@@ -127,32 +127,31 @@
     font-size: 1.1rem;
   }
 
-/* pagination buttons */
-/* .stockMarket-container .paginationButtons {
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  height: 30px;
-  padding: 0;
-  margin: auto;
-  margin-top: 1rem;
-  gap: 1.2rem;
-  list-style: none;
-  margin-bottom: 1rem;
-}
-
-.stockMarket-container .paginationButtons a {
-  border: 1px solid black;
-  border-radius: 8px;
-  padding: 8px;
-  font-size: 14px;
-  cursor: pointer;
-} */
-
 /* chart container */
 .stockMarket-container .market-container .chart-container {
   margin-top: 3rem;
   max-width: 100%;
   overflow: hidden;
   height: 600px;
+}
+
+/* best buy and sell container */
+.stockMarket-container .bestPrices-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10rem;
+  margin-top: 3rem;
+}
+
+.stockMarket-container .bestPrices-container .buy {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.stockMarket-container .bestPrices-container .sell {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 10px;
 }
