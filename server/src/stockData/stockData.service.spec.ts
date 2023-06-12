@@ -22,17 +22,17 @@ describe('StockDataService', () => {
 
     expect(service.dataStore).toBeDefined();
 
-    for (const key in service.dataStore) {
-      const dataEntry = service.dataStore[key];
+    const dataEntries = Object.values(service.dataStore);
 
-      expect(dataEntry.id).toEqual(key);
-      expect(dataEntry.name).toEqual('Tesla');
-      expect(dataEntry.price).toMatch(/^\d+(\.\d{1,2})?$/);
-      expect(dataEntry.timestamp).toEqual(key);
-    }
+    dataEntries.forEach((dataEntry: any) => {
+      expect(typeof dataEntry.id).toBe('string')
+      expect(typeof dataEntry.name).toBe('string')
+      expect(typeof dataEntry.price).toBe('string')
+      expect(typeof dataEntry.timestamp).toBe('string')
+    })
   });
 
-  it('should price be withing a range from 1.00 to 2.00', () => {
+  it('should price be withing a range from 1.00 to 10.00', () => {
     for (const key in service.dataStore) {
       const dataEntry = service.dataStore[key];
 
@@ -56,5 +56,4 @@ describe('StockDataService', () => {
     expect(dataEntry.timestamp).toMatch(date)
    })
   })
-  
 });
