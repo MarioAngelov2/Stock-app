@@ -1,6 +1,5 @@
 import { useState, ChangeEvent } from "react";
-import { addDays, format, subDays } from "date-fns";
-import { getStocks } from "../services/requester";
+import { format, subDays } from "date-fns";
 
 import "../style/StockMarket.css";
 
