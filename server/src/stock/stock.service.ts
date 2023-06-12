@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { formatISO, max, parseISO } from 'date-fns';
-import { StockDataService } from 'src/stock-data/stock-data.service';
+import { StockDataService } from '../stockData/stockData.service';
 
 interface StockData {
   id: string;
@@ -23,16 +23,20 @@ export class StockService {
     const endingDate = parseISO(end);
 
     const filteredData = Object.entries(this.stockDataService.dataStore).filter(
-      ([_, item]) => {
-        const itemTime = parseISO((item as StockData).timestamp);
+      ([_, item]: [string, StockData]) => {
+        const itemTime = parseISO(item.timestamp);
         return itemTime >= startingDate && itemTime <= endingDate;
-      },
+      }
     );
 
-    return filteredData.map(([_, stock]) => stock as StockData);
+    if (filteredData.length === 0) {
+      return [];
+    } else {
+      return filteredData.map(([_, stock]) => stock as StockData);
+    }
   }
 
-  // generates min Price, max Price
+  // generates pfofitable times for buying and selling
   getPrices(start: string, end: string): any {
     const startingDate = parseISO(start);
     const endingDate = parseISO(end);
@@ -42,8 +46,8 @@ export class StockService {
     if (start && end) {
       const filteredData = Object.entries(
         this.stockDataService.dataStore,
-      ).filter(([_, item]) => {
-        const itemTime = parseISO((item as StockData).timestamp);
+      ).filter(([_, item]: [string, StockData]) => {
+        const itemTime = parseISO(item.timestamp);
         return itemTime >= startingDate && itemTime <= endingDate;
       });
 
