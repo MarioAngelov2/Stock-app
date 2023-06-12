@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { StockController } from './stock/stock.controller';
 import { StockService } from './stock/stock.service';
-import { StockDataService } from './stock-data/stock-data.service';
+import { StockDataService } from './stockData/stockData.service';
 
 
 @Module({
