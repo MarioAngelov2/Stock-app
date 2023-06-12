@@ -1,30 +1,16 @@
 import * as React from "react";
 
 import "../style/Home.css";
-import image1 from "../assets/image1.png";
-import coffee from "../assets/coffee.png";
-import phone from "../assets/mobile.png";
-import laptop from "../assets/laptop.png";
+import meta from "../assets/meta.png";
+import apple from "../assets/apple.webp";
+import microsoft from "../assets/microsoft.png";
+import spotify from "../assets/spotify.png";
+import netflix from "../assets/netflix.png";
+import tesla from "../assets/tesla.png";
+import nike from "../assets/nike.jpeg";
+import stocks from "../assets/stocks.png";
+import vw from '../assets/vw.png'
 
-import logo1 from "../assets/hdfc.png";
-import logo2 from "../assets/infosys.png";
-import logo3 from "../assets/kotak.png";
-import logo4 from "../assets/maruti.png";
-import logo5 from "../assets/reliance.png";
-import logo6 from "../assets/tcs.png";
-import logo7 from "../assets/whirpool.png";
-import logo8 from "../assets/wipro.png";
-
-import apple from '../assets/apple.png'
-import microsoft from '../assets/microsoft.png'
-import spotify from '../assets/spotify.png'
-import netflix from '../assets/netflix.png'
-import tesla from '../assets/tesla.png'
-import nike from '../assets/nike.jpeg'
-
-interface Props {
-  price: number;
-}
 
 export function Home() {
   return (
@@ -44,7 +30,7 @@ export function Home() {
         </div>
         <div className="rightSide-info">
           <div className="hero-img">
-            <img src={image1} />
+            <img src={stocks} />
           </div>
         </div>
       </div>
@@ -107,7 +93,7 @@ export function Home() {
             <img src={netflix} />
           </div>
           <div className="logo-container">
-            <img src={logo4} />
+            <img src={vw} />
           </div>
           <div className="logo-container">
             <img src={apple} />
@@ -116,7 +102,7 @@ export function Home() {
             <img src={tesla} />
           </div>
           <div className="logo-container">
-            <img src={logo7} />
+            <img src={meta} />
           </div>
           <div className="logo-container">
             <img src={microsoft} />
