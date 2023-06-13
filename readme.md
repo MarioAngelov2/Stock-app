@@ -40,3 +40,8 @@ Used libraries:
 - sold stocks
 - profit
 - validation
+
+### Screenshots 
+
+<img src="public/../client/public/127.0.0.1_5173_%20(2).png">
+<img src="public/../client/public/127.0.0.1_5173_%20(1).png">
