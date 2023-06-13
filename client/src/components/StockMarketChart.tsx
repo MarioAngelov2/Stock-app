@@ -7,33 +7,36 @@ import {
   Area,
 } from "recharts";
 
+
 export interface Props {
   data: { stockData: any[] };
+
 }
 
 export function StockMarketChart(props: Props) {
   const { data } = props;
 
-  const desiredDataPoints = 100;
-  const totalDataPoints = data.stockData.length;
-  const samplingRate = Math.ceil(totalDataPoints / desiredDataPoints);
+  // const desiredDataPoints = 100;
+  // const totalDataPoints = data.stockData.length;
+  // const samplingRate = Math.ceil(totalDataPoints / desiredDataPoints);
 
-  const sampledData = data.stockData.filter((_, index) => {
-    return index % samplingRate === 0;
-  });
+  // const sampledData = data.stockData.filter((_, index) => {
+  //   return index % samplingRate === 0;
+  // });
 
-  const chartData = sampledData.map((stock: any) => ({
-    x: new Date(stock.timestamp).toLocaleString(),
-    price: stock.price,
-    name: stock.name,
-  }));
-
-
-  // const chartData = data.stockData.map((stock: any) => ({
+  // const chartData = sampledData.map((stock: any) => ({
   //   x: new Date(stock.timestamp).toLocaleString(),
   //   price: stock.price,
   //   name: stock.name,
   // }));
+
+
+  const chartData = data.stockData.map((stock: any) => ({
+    x: new Date(stock.timestamp).toLocaleString(),
+    price: stock.price,
+    name: stock.name,
+  }));
+  
 
   return (
     <div className="chart-container">
