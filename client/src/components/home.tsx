@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import "../style/Home.css";
 import meta from "../assets/meta.png";
@@ -9,17 +9,18 @@ import netflix from "../assets/netflix.png";
 import tesla from "../assets/tesla.png";
 import nike from "../assets/nike.jpeg";
 import stocks from "../assets/stocks.png";
-import vw from '../assets/vw.png'
-
+import vw from "../assets/vw.png";
+import { StockMarket } from "./StockMarket";
 
 export function Home() {
+
   return (
     <div className="home-container">
       <div className="firstRow">
         <div className="leftSide-info">
           <h3>Analyze stocks as easily as buying a coffee.</h3>
           <p>
-            Little Invest Town transforms complicated financial statements of
+            Stock App transforms complicated financial statements of
             companies into an imaginary character's personal finances. It's
             easier to analyse personal finances than that of businesses. No Sign
             Up Required.
@@ -41,7 +42,7 @@ export function Home() {
               <img src={nike} />
             </div>
             <div className="stock-info">
-              <p>Nike</p>
+              <p>NIKE</p>
             </div>
           </div>
           <div className="row">
@@ -49,7 +50,7 @@ export function Home() {
               <img src={netflix} />
             </div>
             <div className="stock-info">
-              <p>Netflix</p>
+              <p>NETFLIX</p>
             </div>
           </div>
           <div className="row">
@@ -57,23 +58,23 @@ export function Home() {
               <img src={spotify} />
             </div>
             <div className="stock-info">
-              <p>Tesla</p>
+              <p>SPOTIFY</p>
             </div>
           </div>
         </div>
         <div className="rightSide-info">
           <div className="bullet-info">
-            <h3>How does LIT work?</h3>
-            <p>LIT scales down company profile to a personal level</p>
+            <h3>How does Stock App work?</h3>
+            <p>Stock App scales down company profile to a personal level</p>
             <p>
               Each company is represented by a character with similar finances
             </p>
             <p>
-              LIT flattens the learning curve to understand company portfolios
+              Stock App flattens the learning curve to understand company portfolios
               by converting complex financial jargon into simple everyday words
             </p>
             <p>
-              LIT simplifies decision making while buying shares for people with
+              Stock App simplifies decision making while buying shares for people with
               a non-finance background
             </p>
             <p>Add stocks you like to your personal plan (saved locally)</p>
