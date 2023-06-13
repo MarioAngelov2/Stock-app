@@ -11,13 +11,14 @@ export function StockMarketBestPrices(props: Props) {
   const maxLength = 6;
 
   const formattedDate = {
-    buyTime: new Date(data.bestPrices.sellTime).toLocaleString(),
-    sellTime: new Date(data.bestPrices.buyTime).toLocaleString(),
+    buyTime: new Date(data.bestPrices.buyTime).toLocaleString(),
+    sellTime: new Date(data.bestPrices.sellTime).toLocaleString(),
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     const onlyNumbers = value.replace(/[^0-9]/g, "");
+
     setFunds(onlyNumbers);
 
     if (value.length >= maxLength) {
@@ -30,6 +31,8 @@ export function StockMarketBestPrices(props: Props) {
     Number(boughtStocks) * data.bestPrices.sellPrice
   ).toFixed(2);
   const profit = (Number(soldStocksPrice) - funds).toFixed(2);
+
+  console.log(formattedDate.sellTime)
 
   return (
     <>
@@ -50,10 +53,7 @@ export function StockMarketBestPrices(props: Props) {
         </div>
       </div>
       <div className="funds-container">
-        <input
-          placeholder="Enter your funds..."
-          onChange={handleChange}
-        />
+        <input placeholder="Enter your funds..." onChange={handleChange} />
         <div className="fundsResult">
           <span>Buy date: {formattedDate.buyTime}</span>
           <span>Sell date: {formattedDate.sellTime}</span>
