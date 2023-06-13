@@ -31,6 +31,16 @@ export function StockMarketData({ onQuery }: DateQueryProps) {
       end: selectEndingDate?.toISOString() ?? "",
     };
 
+    if (!params.start && !params.end) {
+      alert('Select a valid date.')
+    } else if (!params.start || !params.end) {
+      alert('Select a valid date.')
+    } 
+
+    if (params.end < params.start) {
+      alert('Select a valid date.')
+    }
+
     onQuery(params);
   };
 
