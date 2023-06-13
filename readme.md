@@ -20,8 +20,8 @@ Additionally the back-end has an algorithm that selects the earliest and lowest 
 
 Used libraries: 
 
-- Server `date-fns` `react-scroll`
-- Client `date-fns, recharts`
+- Server `date-fns` 
+- Client `date-fns` `recharts` `react-scroll`
 
 ### Usage
 
