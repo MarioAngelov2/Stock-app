@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom'
 
 import '../style/Navbar.css'
 
-import logo from '../assets/penguin.png'
-
 export interface IAppProps {
 }
 
-export function Navbar (props: IAppProps) {
+export function Navbar () {
   return (
     <div className='navbar-container'>
       <div className='logo-container'>
