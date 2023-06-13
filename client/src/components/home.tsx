@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 import "../style/Home.css";
 import meta from "../assets/meta.png";
@@ -10,9 +10,11 @@ import tesla from "../assets/tesla.png";
 import nike from "../assets/nike.jpeg";
 import stocks from "../assets/stocks.png";
 import vw from "../assets/vw.png";
-import { StockMarket } from "./StockMarket";
 
 export function Home() {
+  const scrollToStockMarket = () => {
+    scroll.scrollToBottom()
+  }
 
   return (
     <div className="home-container">
@@ -20,13 +22,15 @@ export function Home() {
         <div className="leftSide-info">
           <h3>Analyze stocks as easily as buying a coffee.</h3>
           <p>
-            Stock App transforms complicated financial statements of
-            companies into an imaginary character's personal finances. It's
-            easier to analyse personal finances than that of businesses. No Sign
-            Up Required.
+            Stock App transforms complicated financial statements of companies
+            into an imaginary character's personal finances. It's easier to
+            analyse personal finances than that of businesses. No Sign Up
+            Required.
           </p>
           <div className="button">
-            <button>View Stock Prices</button>
+            <Link to="stockMarket" smooth={true} duration={500}>
+            <button onClick={scrollToStockMarket}>View Stock Prices</button>
+            </Link>
           </div>
         </div>
         <div className="rightSide-info">
@@ -70,12 +74,13 @@ export function Home() {
               Each company is represented by a character with similar finances
             </p>
             <p>
-              Stock App flattens the learning curve to understand company portfolios
-              by converting complex financial jargon into simple everyday words
+              Stock App flattens the learning curve to understand company
+              portfolios by converting complex financial jargon into simple
+              everyday words
             </p>
             <p>
-              Stock App simplifies decision making while buying shares for people with
-              a non-finance background
+              Stock App simplifies decision making while buying shares for
+              people with a non-finance background
             </p>
             <p>Add stocks you like to your personal plan (saved locally)</p>
           </div>

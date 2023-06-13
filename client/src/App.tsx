@@ -4,12 +4,14 @@ import { Home } from "./components/Home";
 import { Navbar } from "./components/Navbar";
 import { StockMarket } from "./components/StockMarket";
 
+
 function App() {
+
   return (
     <div>
       <Navbar />
       <Home />
-      <StockMarket />
+      <StockMarket/>
       <Footer />
     </div>
   );

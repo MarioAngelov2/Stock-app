@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "../style/StockMarket.css";
 import { getStocks } from "../services/requester";
 import { StockMarketData } from "./StockMarketData";
@@ -43,7 +43,7 @@ export function StockMarket() {
   };
 
   return (
-    <div className="stockMarket-container">
+    <div className="stockMarket-container" id="stockMarket">
       <div className="market-container">
         <h2>Select a time slice to see all the stock prices!</h2>
         <StockMarketData onQuery={handleDataQuery} />
