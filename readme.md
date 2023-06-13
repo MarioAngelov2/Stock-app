@@ -5,7 +5,8 @@
 ### Details
 
 #### Front-end
-The Stock App is a full stack application that allows users to search and explore the Stock Market. It provides various features to help users analyze stock prices and make informed decisions.
+The front-end is build with `Vite` and `React` in TypeScript.
+The application allows users to search and explore the Stock Market. It provides various features to help users analyze stock prices and make informed decisions.
 
 When using the application, users can specify a time slice period to search within. The application will retrieve and display all the stock prices available within that specific time period. Additionally, it offers insights on the best time and price to buy stocks, as well as the best time and price to sell stocks.
 
