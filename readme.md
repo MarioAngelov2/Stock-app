@@ -12,7 +12,10 @@ When using the application, users can specify a time slice period to search with
 Furthermore, the application includes an input field where users can enter their available funds. Based on this input, the app calculates and presents the potential buy and sell dates, the number of stocks that could be bought, the purchase and selling prices, and the estimated profit.
 
 #### Back-end
-The back-end is build with `Nest.js`
+The back-end is build with `Nest.js` 
+The data in the back-end is stored locally in memory. It has an algorithm that generates stock data within a specific time period of 3 days. The data is generated per second with different prices and timestamps. Whenever the client choses a time slice, a Get request is sent to the server with the specific time slice. An algorithm takes the parameters and sends back the data within the selected time slice. 
+Additionally the back-end has an algorithm that selects the earliest and lowest price to buy along with the best price to sell.
+
 
 Used libraries: 
 
