@@ -9,8 +9,8 @@ function App() {
     <div>
       <Navbar />
       <Home />
-      <Footer />
       <StockMarket />
+      <Footer />
     </div>
   );
 }
