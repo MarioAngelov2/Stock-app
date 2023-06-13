@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "../style/StockMarket.css";
 import { getStocks } from "../services/requester";
 import { StockMarketData } from "./StockMarketData";

@@ -43,14 +43,13 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  background-color: rgb(230, 149, 63);
+  background-color: rgb(222, 142, 57);
   color: white;
   transition: ease-in-out 0.2s;
 }
 
 .home-container .firstRow .leftSide-info .button button:hover {
-  transform: scale(1.05);
-  transition: ease-in-out 0.2s;
+  background-color: rgb(236, 164, 87);
 }
 
 /* right side */

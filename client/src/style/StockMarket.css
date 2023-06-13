@@ -80,7 +80,12 @@
   text-transform: uppercase;
   cursor: pointer;
   color: white;
-  background-color: rgb(230, 149, 63);
+  transition: ease-in-out 0.2s;
+  background-color: rgb(222, 142, 57);;
+}
+
+.stockMarket-container .market-container .button .search-btn:hover {
+  background-color: rgb(236, 164, 87);
 }
 
 /* displayed stock data */
