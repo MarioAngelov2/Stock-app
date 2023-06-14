@@ -5,6 +5,8 @@ import { StockMarketData } from "./StockMarketData";
 import { StockMarketChart } from "./StockMarketChart";
 import { StockMarketBestPrices } from "./StockMarketBestPrices";
 
+import { StockMarketContext } from "../context/StockMarketContext";
+
 interface StockItem {
   id: number;
   price: number;
@@ -21,7 +23,6 @@ interface BestPrices {
 }
 
 export function StockMarket() {
-
   const [data, setData] = useState<{
     stockData: StockItem[];
     bestPrices: BestPrices;
@@ -36,6 +37,14 @@ export function StockMarket() {
     },
   });
 
+  const [startTime, setStartTime] = useState<string>("");
+  const [endTime, setEndTime] = useState<string>("");
+
+  const setStartEndTime = (newStartTime: string, newEndTime: string) => {
+    setStartTime(newStartTime);
+    setEndTime(newEndTime);
+  };
+
   const handleDataQuery = (params: { start: string; end: string }) => {
     getStocks(params).then((result) => {
       setData(result);
@@ -43,21 +52,25 @@ export function StockMarket() {
   };
 
   return (
-    <div className="stockMarket-container" id="stockMarket">
-      <div className="market-container">
-        <h2>Select a time slice to see all the stock prices!</h2>
-        <StockMarketData onQuery={handleDataQuery} />
-        {data.stockData.length > 0 ? (
-          <div className="stockData-container">
-            <StockMarketBestPrices data={data}/>
-            <div className="stockList-container">
-              <StockMarketChart data={data} />
+    <StockMarketContext.Provider
+      value={{ startTime, endTime, setStartEndTime }}
+    >
+      <div className="stockMarket-container" id="stockMarket">
+        <div className="market-container">
+          <h2>Select a time slice to see all the stock prices!</h2>
+          <StockMarketData onQuery={handleDataQuery} />
+          {data.stockData.length > 0 ? (
+            <div className="stockData-container">
+              <StockMarketBestPrices data={data} />
+              <div className="stockList-container">
+                <StockMarketChart data={data} />
+              </div>
             </div>
-          </div>
-        ) : (
-          <h3>No stock data available.</h3>
-        )}
+          ) : (
+            <h3>No stock data available.</h3>
+          )}
+        </div>
       </div>
-    </div>
+    </StockMarketContext.Provider>
   );
 }

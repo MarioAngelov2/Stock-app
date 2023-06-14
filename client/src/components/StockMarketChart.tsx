@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { StockMarketContext } from "../context/StockMarketContext";
 import {
   XAxis,
   YAxis,
@@ -7,36 +9,32 @@ import {
   Area,
 } from "recharts";
 
-
 export interface Props {
   data: { stockData: any[] };
-
 }
 
 export function StockMarketChart(props: Props) {
   const { data } = props;
+  const { startTime, endTime } = useContext(StockMarketContext);
 
-  // const desiredDataPoints = 100;
-  // const totalDataPoints = data.stockData.length;
-  // const samplingRate = Math.ceil(totalDataPoints / desiredDataPoints);
+  const filteredData = data.stockData.filter((stock: any) => {
+    const currentTime = new Date(stock.timestamp).toISOString();
+    return currentTime >= startTime && currentTime <= endTime
+  })
 
-  // const sampledData = data.stockData.filter((_, index) => {
-  //   return index % samplingRate === 0;
-  // });
+  const desiredDataPoints = 500;
+  const totalDataPoints = filteredData.length;
+  const samplingRate = Math.ceil(totalDataPoints / desiredDataPoints);
 
-  // const chartData = sampledData.map((stock: any) => ({
-  //   x: new Date(stock.timestamp).toLocaleString(),
-  //   price: stock.price,
-  //   name: stock.name,
-  // }));
-
-
-  const chartData = data.stockData.map((stock: any) => ({
-    x: new Date(stock.timestamp).toLocaleString(),
+  const sampledData = filteredData.filter((_, index) => {
+    return index % samplingRate === 0;
+  });
+  
+  const chartData = sampledData.map((stock: any) => ({
+    time: new Date(stock.timestamp).toLocaleString(),
     price: stock.price,
     name: stock.name,
   }));
-  
 
   return (
     <div className="chart-container">
@@ -53,12 +51,10 @@ export function StockMarketChart(props: Props) {
               tickFormatter={(number) => `$${number.toFixed(2)}`}
             />
             <XAxis
-              dataKey="x"
+              dataKey="time"
               tickLine={false}
               axisLine={false}
-              tickFormatter={(str): any => {
-                return new Date(str).toLocaleTimeString();
-              }}
+              tickFormatter={(time): any => time}
             />
             <Tooltip />
             <Area
