@@ -32,8 +32,6 @@ export function StockMarketBestPrices(props: Props) {
   ).toFixed(2);
   const profit = (Number(soldStocksPrice) - funds).toFixed(2);
 
-  console.log(formattedDate.sellTime)
-
   return (
     <>
       <div className="bestPrices-container">
@@ -60,7 +58,6 @@ export function StockMarketBestPrices(props: Props) {
           <span>Bought stocks: ${boughtStocks}</span>
           <span>Sold for: ${soldStocksPrice}</span>
           <span>Profit: ${profit}</span>
-          <span></span>
         </div>
       </div>
     </>
