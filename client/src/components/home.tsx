@@ -1,5 +1,4 @@
 import { Link, animateScroll as scroll } from "react-scroll";
-
 import "../style/Home.css";
 import meta from "../assets/meta.png";
 import apple from "../assets/apple.webp";
