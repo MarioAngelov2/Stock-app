@@ -1,6 +1,5 @@
-import { useState, ChangeEvent, useContext } from "react";
+import { useState, ChangeEvent } from "react";
 import { format, subDays } from "date-fns";
-import { StockMarketContext } from "../context/StockMarketContext";
 
 import "../style/StockMarket.css";
 
@@ -11,7 +10,6 @@ interface DateQueryProps {
 }
 
 export function StockMarketData({ onQuery }: DateQueryProps) {
-  const { setStartEndTime } = useContext(StockMarketContext);
 
   const [selectStartingDate, setSelectStargingDate] = useState<Date | null>(
     null
@@ -45,7 +43,6 @@ export function StockMarketData({ onQuery }: DateQueryProps) {
     }
 
     onQuery(params);
-    setStartEndTime(params.start, params.end)
   };
 
   const currentDate = new Date();

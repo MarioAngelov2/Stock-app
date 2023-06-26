@@ -5,8 +5,6 @@ import { StockMarketData } from "./StockMarketData";
 import { StockMarketChart } from "./StockMarketChart";
 import { StockMarketBestPrices } from "./StockMarketBestPrices";
 
-import { StockMarketContext } from "../context/StockMarketContext";
-
 interface StockItem {
   id: number;
   price: number;
@@ -37,14 +35,6 @@ export function StockMarket() {
     },
   });
 
-  const [startTime, setStartTime] = useState<string>("");
-  const [endTime, setEndTime] = useState<string>("");
-
-  const setStartEndTime = (newStartTime: string, newEndTime: string) => {
-    setStartTime(newStartTime);
-    setEndTime(newEndTime);
-  };
-
   const handleDataQuery = (params: { start: string; end: string }) => {
     getStocks(params).then((result) => {
       setData(result);
@@ -52,9 +42,6 @@ export function StockMarket() {
   };
 
   return (
-    <StockMarketContext.Provider
-      value={{ startTime, endTime, setStartEndTime }}
-    >
       <div className="stockMarket-container" id="stockMarket">
         <div className="market-container">
           <h2>Select a time slice to see all the stock prices!</h2>
@@ -71,6 +58,5 @@ export function StockMarket() {
           )}
         </div>
       </div>
-    </StockMarketContext.Provider>
   );
 }

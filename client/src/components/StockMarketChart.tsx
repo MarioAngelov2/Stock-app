@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { StockMarketContext } from "../context/StockMarketContext";
 import {
   XAxis,
   YAxis,
@@ -15,20 +13,15 @@ export interface Props {
 
 export function StockMarketChart(props: Props) {
   const { data } = props;
-  const { startTime, endTime } = useContext(StockMarketContext);
-
-  const filteredData = data.stockData.filter((stock: any) => {
-    const currentTime = new Date(stock.timestamp).toISOString();
-    return currentTime >= startTime && currentTime <= endTime
-  })
 
   const desiredDataPoints = 500;
-  const totalDataPoints = filteredData.length;
+  const totalDataPoints = data.stockData.length;
   const samplingRate = Math.ceil(totalDataPoints / desiredDataPoints);
 
-  const sampledData = filteredData.filter((_, index) => {
+  const sampledData = data.stockData.filter((_, index) => {
     return index % samplingRate === 0;
   });
+
   
   const chartData = sampledData.map((stock: any) => ({
     time: new Date(stock.timestamp).toLocaleString(),
