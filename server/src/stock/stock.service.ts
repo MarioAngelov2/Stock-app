@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { parseISO } from 'date-fns';
+import { BadGatewayException, Injectable } from '@nestjs/common';
+import { parseISO, isValid } from 'date-fns';
 import { StockDataService } from '../stockData/stockData.service';
 
 interface StockData {
@@ -19,6 +19,14 @@ export class StockService {
       this.stockDataService.generateAndStoreData();
     }
 
+    if (!isValid(parseISO(start)) || !isValid(parseISO(end))) {
+      throw new BadGatewayException('Invalid date input');
+    }
+
+    if (parseISO(start) >= parseISO(end)) {
+      throw new BadGatewayException('Invalid start or end date input')
+    }
+
     const startingDate = parseISO(start);
     const endingDate = parseISO(end);
 
@@ -26,7 +34,7 @@ export class StockService {
       ([_, item]: [string, StockData]) => {
         const itemTime = parseISO(item.timestamp);
         return itemTime >= startingDate && itemTime <= endingDate;
-      }
+      },
     );
 
     if (filteredData.length === 0) {
