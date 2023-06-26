@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { parseISO, subDays } from 'date-fns';
+import { subDays } from 'date-fns';
 
 @Injectable()
 export class StockDataService {

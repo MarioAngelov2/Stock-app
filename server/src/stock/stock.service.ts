@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { formatISO, max, parseISO } from 'date-fns';
+import { parseISO } from 'date-fns';
 import { StockDataService } from '../stockData/stockData.service';
 
 interface StockData {

@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { StockDataService } from './stockData.service';
-import { subDays } from 'date-fns';
 
 describe('StockDataService', () => {
   let service: StockDataService;

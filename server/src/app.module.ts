@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { StockController } from './stock/stock.controller';
 import { StockService } from './stock/stock.service';
 import { StockDataService } from './stockData/stockData.service';
@@ -8,7 +6,7 @@ import { StockDataService } from './stockData/stockData.service';
 
 @Module({
   imports: [],
-  controllers: [AppController, StockController],
-  providers: [AppService, StockService, StockDataService],
+  controllers: [StockController],
+  providers: [StockService, StockDataService],
 })
 export class AppModule {}
