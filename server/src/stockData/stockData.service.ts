@@ -4,14 +4,13 @@ import { subDays } from 'date-fns';
 @Injectable()
 export class StockDataService {
   dataStore: any = {};
-  prices: any = [];
   isGeneratedData: boolean = false;
 
   generateAndStoreData(): void {
     const newData = {};
 
     const endingDate = new Date();
-    const startingDate = subDays(endingDate, 1);
+    const startingDate = subDays(endingDate, 3);
 
     let currentTimeStamp = startingDate.getTime();
 
@@ -32,6 +31,9 @@ export class StockDataService {
     }
 
     this.dataStore = newData;
-    this.isGeneratedData = true;
+    
+    if (this.dataStore) {
+      this.isGeneratedData = true;
+    }
   }
 }
