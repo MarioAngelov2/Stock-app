@@ -7,7 +7,7 @@ export class StockController {
   constructor(private readonly stockService: StockService) {}
 
   @Get()
-  getData(@Query('start') start?: string, @Query('end') end?: string) {
+  getData(@Query('start') start: string, @Query('end') end: string) {
     if (!start || !end) {
       throw new BadRequestException('Missing start or end parameter');
     }
