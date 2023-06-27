@@ -8,7 +8,7 @@ export class StockDataService {
   isGeneratedData: boolean = false;
 
   generateAndStoreData(): any {
-    const worker = new Worker('../../workers.ts')
+    const worker = new Worker('../workers/worker.ts')
     worker.on('message', (data) => {
       this.dataStore = data;
     });
