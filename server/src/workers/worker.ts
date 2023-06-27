@@ -1,7 +1,7 @@
 import { parentPort } from 'worker_threads';
 import { subDays } from 'date-fns';
 
-export const generateData = () => {
+const generateData = () => {
   const newData = {};
 
   const endingDate = new Date();
@@ -25,5 +25,10 @@ export const generateData = () => {
     currentTimeStamp += 1000;
   }
 
-    parentPort.postMessage(newData);
+  return newData;
 };
+
+if (parentPort) {
+  const data = generateData();
+  parentPort.postMessage(data);
+}
