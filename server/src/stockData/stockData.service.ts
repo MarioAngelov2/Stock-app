@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { subDays } from 'date-fns';
 import { Worker } from 'worker_threads';
+
+const pathToWorker = __dirname + '/worker'
 
 @Injectable()
 export class StockDataService {
@@ -8,7 +9,7 @@ export class StockDataService {
   isGeneratedData: boolean = false;
 
   generateAndStoreData(): any {
-    const worker = new Worker('../workers/worker.ts')
+    const worker = new Worker(pathToWorker)
     worker.on('message', (data) => {
       this.dataStore = data;
     });

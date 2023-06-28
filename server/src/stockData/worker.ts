@@ -13,7 +13,7 @@ const generateData = () => {
     let currentDate = new Date(currentTimeStamp);
 
     let randomPrice = (1 + Math.random()).toFixed(2);
-
+    
     const newDataEntry = {
       id: currentDate.toISOString(),
       name: 'Tesla',
