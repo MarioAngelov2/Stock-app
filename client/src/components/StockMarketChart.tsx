@@ -65,36 +65,3 @@ export function StockMarketChart(props: Props) {
         </div>
     );
 }
-
-{
-    /* <div className="chart-container">
-<div className="chart-wrapper">
-  <div>
-    <AreaChart width={1200} height={600} data={chartData}>
-      <CartesianGrid stroke="#ccc" opacity="0.5" vertical={false} />
-      <YAxis
-        dataKey="price"
-        axisLine={false}
-        domain={["dataMin, 'dataMax"]}
-        tickCount={10}
-        tickLine={false}
-        tickFormatter={(number) => `$${number.toFixed(2)}`}
-      />
-      <XAxis
-        dataKey="time"
-        tickLine={false}
-        axisLine={false}
-        tickFormatter={(time): any => time}
-      />
-      <Tooltip />
-      <Area
-        type="monotone"
-        dataKey="price"
-        stroke="#1398C0"
-        fill="#1398C0"
-      />
-    </AreaChart>
-  </div>
-</div>
-</div>  */
-}
