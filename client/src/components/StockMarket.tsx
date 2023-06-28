@@ -46,7 +46,6 @@ export function StockMarket() {
             <div className="market-container">
                 <h2>Select a time slice to see all the stock prices!</h2>
                 <StockMarketData onQuery={handleDataQuery} />
-
                 {data.stockData.length > 0 ? (
                     <div className="stockData-container">
                         <StockMarketBestPrices data={data} />
