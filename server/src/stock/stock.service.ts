@@ -13,7 +13,7 @@ interface StockData {
 export class StockService {
   constructor(private readonly stockDataService: StockDataService) {}
 
-  // sends the time slice date to the client
+  // sends filtered data based on the client date search
   getFormattedURL(start: string, end: string): any {
     if (!this.stockDataService.isGeneratedData) {
       this.stockDataService.generateAndStoreData();
