@@ -1,24 +1,15 @@
 import { BadRequestException, Controller, Get, Query } from '@nestjs/common';
 import { StockService } from './stock.service';
 import { isValid, parseISO } from 'date-fns';
+import { QueryParamsDto } from './queryParams.dto';
 
 @Controller('stock')
 export class StockController {
   constructor(private readonly stockService: StockService) {}
 
   @Get()
-  getData(@Query('start') start: string, @Query('end') end: string) {
-    if (!start || !end) {
-      throw new BadRequestException('Missing start or end parameter');
-    }
-
-    if (!isValid(parseISO(start)) || !isValid(parseISO(end))) {
-      throw new BadRequestException('Invalid date input');
-    }
-
-    if (parseISO(start) >= parseISO(end)) {
-      throw new BadRequestException('Invalid start or end date input');
-    }
+  getData(@Query() queryParams: QueryParamsDto) {
+    const { start, end } = queryParams;
 
     const URL = this.stockService.getFormattedURL(start, end);
     const PRICES = this.stockService.getPrices(start, end);
