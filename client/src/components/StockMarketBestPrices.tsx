@@ -19,11 +19,14 @@ export function StockMarketBestPrices(props: Props) {
     const value = event.target.value;
     const onlyNumbers = value.replace(/[^0-9]/g, "");
 
-    setFunds(onlyNumbers);
+    if (Number(value) >= 0) {
+      setFunds(onlyNumbers)
+    }
 
     if (value.length >= maxLength) {
       alert("Maximum funds exceeded");
     }
+
   };
 
   const boughtStocks = (funds * data.bestPrices.buyPrice).toFixed(2);
