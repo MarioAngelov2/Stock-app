@@ -36,9 +36,16 @@ export function StockMarket() {
     });
 
     const handleDataQuery = (params: { start: string; end: string }) => {
-        getStocks(params).then((result) => {
-            setData(result);
-        });
+        if (params.start && params.end && params.start < params.end) {
+            getStocks(params).then((result) => {
+                setData(result);
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+        } else {
+          console.warn('Parameters are required!')
+        }
     };
 
     return (
