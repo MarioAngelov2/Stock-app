@@ -34,9 +34,9 @@ export function StockMarketData({ onQuery }: DateQueryProps) {
         if (!params.start && !params.end) {
             alert("Select a valid date.");
         } else if (!params.start || !params.end) {
-            alert("Select a valid date.");
+            alert("One of two parameters are missing.");
         } else if (params.end < params.start) {
-            alert("Select a valid date.");
+            alert("End parameter must be greater than start parameter.");
         }
 
         onQuery(params);
